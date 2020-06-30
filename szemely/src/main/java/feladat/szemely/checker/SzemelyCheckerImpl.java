@@ -3,6 +3,9 @@ package feladat.szemely.checker;
 import org.springframework.stereotype.Service;
 
 import feladat.szemely.dto.SzemelyDTO;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Service
@@ -40,7 +43,15 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctSzulDat(SzemelyDTO szemely) {
-    	return true;
+    	Date szulDat = szemely.getSzulDat();
+    	Calendar startCal = Calendar.getInstance();
+    	startCal.add(Calendar.YEAR, -120);
+    	Calendar endCal = Calendar.getInstance();
+    	endCal.add(Calendar.YEAR, -18);
+    	Date startDate = startCal.getTime();
+    	Date endDate = endCal.getTime();
+    	
+    	return szulDat.compareTo(startDate) >= 0 && szulDat.compareTo(endDate) <=0;
     }
     
     public boolean correctNeme(SzemelyDTO szemely) {
@@ -87,6 +98,5 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
 	    
     	return true;
     }
-
 
 }
