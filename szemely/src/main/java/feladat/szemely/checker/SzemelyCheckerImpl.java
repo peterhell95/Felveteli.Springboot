@@ -55,7 +55,11 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctNeme(SzemelyDTO szemely) {
-    	return true;
+    	String neme = szemely.getNeme();
+    	if(neme.equals("F") || neme.equals("N"))
+    		return true;
+    	else
+    		return false;
     }
     
     public boolean correctAllampKod(SzemelyDTO szemely) {
