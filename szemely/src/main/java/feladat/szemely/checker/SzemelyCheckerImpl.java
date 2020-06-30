@@ -3,9 +3,10 @@ package feladat.szemely.checker;
 import org.springframework.stereotype.Service;
 
 import feladat.szemely.dto.SzemelyDTO;
-
+import feladat.szemely.allamp.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Service
@@ -64,12 +65,18 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     		return false;
     }
     
-    public boolean correctAllampKod(SzemelyDTO szemely) {
-    	
+    public boolean correctAllampKod(SzemelyDTO szemely, List<Allampolgarsag> list) {
+    	List<Allampolgarsag> allampolgarsag = list;
     	if(szemely.getAllampKod().length()!=3)
     		return false;
     	// meg ellenorizni kell a jsonbol
-    	return true;
+    	 for (Allampolgarsag i : allampolgarsag) {	
+    		 if(i.getKod().equals(szemely.getAllampKod()))
+    			 return true;
+ 	    	
+ 	    }
+    	
+    	return false;
     }
     
     public boolean correctAllampDekod(SzemelyDTO szemely) {
@@ -85,7 +92,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     	String[] arrOfName = name.split(" "); 
 		int numberOfName = 0;
 		boolean containsDr = false;
-		final String REGEX = "([ a-zA-ZÄ./'-]*)"; 
+		final String REGEX = "([ a-zA-ZÄ./'-]*)";
 		
 		//hossz
 		if(name.length() > 80 || name.isEmpty())  

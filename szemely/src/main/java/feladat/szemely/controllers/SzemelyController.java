@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import feladat.szemely.dto.SzemelyDTO;
-import feladat.szemely.services.SzemelyService;
+import feladat.szemely.services.SzemelyServiceImpl;
 
 @RestController
 @RequestMapping("/szemely")
 public class SzemelyController {
 
     @Autowired
-    private SzemelyService service;
+    private SzemelyServiceImpl service;
 
     
     @GetMapping("/incorrectPersons/{szemelyek}")
-    public List<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) {
+    public List<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
         return  service.szemelyCheck(szemelyek);
     }
     

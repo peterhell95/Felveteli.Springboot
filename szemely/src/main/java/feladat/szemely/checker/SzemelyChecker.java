@@ -2,6 +2,10 @@ package feladat.szemely.checker;
 
 
 
+import java.util.List;
+
+import feladat.szemely.allamp.Allampolgarsag;
+import feladat.szemely.allamp.AllampolgarsagJSON;
 import feladat.szemely.dto.SzemelyDTO;
 
 public interface SzemelyChecker {
@@ -16,7 +20,7 @@ public interface SzemelyChecker {
     
     public boolean correctNeme(SzemelyDTO szemely) ;
     
-    public boolean correctAllampKod(SzemelyDTO szemely) ;
+    public boolean correctAllampKod(SzemelyDTO szemely,List<Allampolgarsag> list) ;
     
     public boolean correctAllampDekod(SzemelyDTO szemely) ;
     
