@@ -21,28 +21,28 @@ public class SzemelyServiceImpl implements SzemelyService {
     	
     	for (SzemelyDTO szemely : szemelyek) 
     	{ 
-    	    if(checker.incorrectVisNev(szemely))
+    	    if(!checker.correctVisNev(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectSzulNev(szemely))
+    	    if(!checker.correctSzulNev(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectANev(szemely))
+    	    if(!checker.correctANev(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectSzulDat(szemely))
+    	    if(!checker.correctSzulDat(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectNeme(szemely))
+    	    if(!checker.correctNeme(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectAllampKod(szemely))
+    	    if(!checker.correctAllampKod(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectAllampDekod(szemely))
+    	    if(!checker.correctAllampDekod(szemely))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(checker.incorrectOkmanylista(szemely))
+    	    if(!checker.correctOkmanylista(szemely))
     	    	incorrectPersons.add(szemely);
     	 
     	}
