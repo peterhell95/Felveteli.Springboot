@@ -43,6 +43,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctSzulDat(SzemelyDTO szemely) {
+    	
     	Date szulDat = szemely.getSzulDat();
     	Calendar startCal = Calendar.getInstance();
     	startCal.add(Calendar.YEAR, -120);
@@ -55,6 +56,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctNeme(SzemelyDTO szemely) {
+    	
     	String neme = szemely.getNeme();
     	if(neme.equals("F") || neme.equals("N"))
     		return true;
@@ -63,6 +65,10 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctAllampKod(SzemelyDTO szemely) {
+    	
+    	if(szemely.getAllampKod().length()!=3)
+    		return false;
+    	// meg ellenorizni kell a jsonbol
     	return true;
     }
     
