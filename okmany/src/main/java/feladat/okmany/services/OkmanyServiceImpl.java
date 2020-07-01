@@ -26,22 +26,28 @@ public class OkmanyServiceImpl implements OkmanyService {
     public Set<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
     	Set<OkmanyDTO> incorrectDocuments = new HashSet<>();
     	List<Okmanytipus> okmanytipus = loadJSON();
+    	boolean incorrect = false;
     	
     	for (OkmanyDTO okmany : okmanyok) 
     	{ 
+    		incorrect = false;
+    		
     	    if(checker.incorrectOkmTipus(okmany, okmanytipus ))
-    	    	incorrectDocuments.add(okmany);
+    	    	incorrect = true;
     	    
     	    if(checker.incorrectOkmanySzam(okmany))
-    	    	incorrectDocuments.add(okmany);
+    	    	incorrect = true;
     	    
     	    if(checker.incorrectOkmanyKep(okmany))
-    	    	incorrectDocuments.add(okmany);
+    	    	incorrect = true;
     	    
     	    if(checker.incorrectLejarDat(okmany))
-    	    	incorrectDocuments.add(okmany);
+    	    	incorrect = true;
     	    
     	    if(checker.incorrectErvenyes(okmany))
+    	    	incorrect = true;
+    	    
+    	    if(incorrect == true)
     	    	incorrectDocuments.add(okmany);
     	 
     	}

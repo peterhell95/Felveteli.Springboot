@@ -16,7 +16,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
 	public boolean correctVisNev(SzemelyDTO szemely) {
 		String visNev = szemely.getVisNev();
 		
-		if(!this.checkString(visNev))
+		if(!checkString(visNev))
 			return false;
 		
 		return true;
@@ -25,7 +25,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     public boolean correctSzulNev(SzemelyDTO szemely) {
     	String szulNev = szemely.getSzulNev();
 		
-		if(!this.checkString(szulNev))
+		if(!checkString(szulNev))
 			return false;
 		
 		return true;
@@ -34,7 +34,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     public boolean correctANev(SzemelyDTO szemely) {
     	String aNev = szemely.getaNev();
 		
-		if(!this.checkString(aNev))
+		if(!checkString(aNev))
 			return false;
 		
 		return true;
@@ -49,7 +49,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     	Date startDate = startCal.getTime();
     	Date endDate = endCal.getTime();
     	
-    	return szulDat.compareTo(startDate) >= 0 && szulDat.compareTo(endDate) <=0;
+    	return szulDat.compareTo(startDate) >= 0 && szulDat.compareTo(endDate) <= 0;
     }
     
     public boolean correctNeme(SzemelyDTO szemely) {

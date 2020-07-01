@@ -1,6 +1,7 @@
 package feladat.szemely.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,13 @@ public class SzemelyController {
 
     
     @GetMapping("/incorrectPersons/{szemelyek}")
-    public List<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
+    public Set<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
         return  service.szemelyCheck(szemelyek);
+    }
+    
+    @GetMapping("/correctPersons/{szemelyek}")
+    public Set<SzemelyDTO> getAllCorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) {
+        return  service.getAllCorrectSzemely(szemelyek);
     }
     
 
