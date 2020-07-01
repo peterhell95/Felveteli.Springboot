@@ -2,11 +2,14 @@ package feladat.okmany.checker;
 
 
 
+import java.util.List;
+
 import feladat.okmany.dto.OkmanyDTO;
+import feladat.okmany.tipus.Okmanytipus;
 
 public interface OkmanyChecker {
 	
-	public boolean incorrectOkmTipus(OkmanyDTO okmany);
+	public boolean incorrectOkmTipus(OkmanyDTO okmany,List<Okmanytipus> okmanytipus);
     
     public boolean incorrectOkmanySzam(OkmanyDTO okmany);
     

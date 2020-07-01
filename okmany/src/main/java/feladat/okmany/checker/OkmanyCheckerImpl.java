@@ -1,18 +1,26 @@
 package feladat.okmany.checker;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import feladat.okmany.dto.OkmanyDTO;
+import feladat.okmany.tipus.Okmanytipus;
 
 @Service
 public class OkmanyCheckerImpl implements OkmanyChecker {
 
 
-	public boolean incorrectOkmTipus(OkmanyDTO okmany) {
-		if(okmany.getOkmTipus().length()!=1)
+	public boolean incorrectOkmTipus(OkmanyDTO okmany, List<Okmanytipus> okmanytipus ) {
+		
+		if(okmany.getOkmTipus().length() != 1)
     		return false;
-    	// meg ellenorizni kell a jsonbol
-    	return true;
+		
+		for (Okmanytipus i : okmanytipus) {	
+   		 if(i.getKod().equals(okmany.getOkmTipus()))
+   			 return true;    	
+	    }
+    	return false;
 	}
 
 	public boolean incorrectOkmanySzam(OkmanyDTO okmany) {

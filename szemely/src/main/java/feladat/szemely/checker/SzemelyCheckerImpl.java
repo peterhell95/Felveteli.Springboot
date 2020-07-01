@@ -14,7 +14,6 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
 
     
 	public boolean correctVisNev(SzemelyDTO szemely) {
-		
 		String visNev = szemely.getVisNev();
 		
 		if(!this.checkString(visNev))
@@ -24,7 +23,6 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctSzulNev(SzemelyDTO szemely) {
-    	
     	String szulNev = szemely.getSzulNev();
 		
 		if(!this.checkString(szulNev))
@@ -34,7 +32,6 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctANev(SzemelyDTO szemely) {
-    	
     	String aNev = szemely.getaNev();
 		
 		if(!this.checkString(aNev))
@@ -44,7 +41,6 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctSzulDat(SzemelyDTO szemely) {
-    	
     	Date szulDat = szemely.getSzulDat();
     	Calendar startCal = Calendar.getInstance();
     	startCal.add(Calendar.YEAR, -120);
@@ -57,7 +53,6 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctNeme(SzemelyDTO szemely) {
-    	
     	String neme = szemely.getNeme();
     	if(neme.equals("F") || neme.equals("N"))
     		return true;
@@ -65,15 +60,14 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     		return false;
     }
     
-    public boolean correctAllampKod(SzemelyDTO szemely, List<Allampolgarsag> list) {
-    	List<Allampolgarsag> allampolgarsag = list;
+    public boolean correctAllampKod(SzemelyDTO szemely, List<Allampolgarsag> allampolgarsag) {
+  
     	if(szemely.getAllampKod().length()!=3)
     		return false;
-    	// meg ellenorizni kell a jsonbol
+    	
     	 for (Allampolgarsag i : allampolgarsag) {	
     		 if(i.getKod().equals(szemely.getAllampKod()))
-    			 return true;
- 	    	
+    			 return true;    	
  	    }
     	
     	return false;
@@ -104,7 +98,7 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
 			if(!m.matches())
 				return false;	
 			
-		//legalabb 2 nevelem
+		//legalabb 2 nevelem + Dr.
 	    for (String i : arrOfName) {	
 	    	numberOfName++;
 	    	if(i.equals("Dr."))

@@ -20,7 +20,7 @@ public class OkmanyController {
 
     
     @GetMapping("/incorrectDocuments/{okmanyok}")
-    public List<OkmanyDTO> getAllIncorrectDocument(@PathVariable List<OkmanyDTO> okmanyok) {
+    public List<OkmanyDTO> getAllIncorrectDocument(@PathVariable List<OkmanyDTO> okmanyok) throws Exception {
         return  service.okmanyCheck(okmanyok);
     }
     

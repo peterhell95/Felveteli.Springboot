@@ -27,7 +27,7 @@ public class SzemelyServiceImpl {
 	
     public List<SzemelyDTO> szemelyCheck(List<SzemelyDTO> szemelyek) throws  Exception{
     	List<SzemelyDTO> incorrectPersons = new ArrayList<>();
-    	List<Allampolgarsag> allampolgarsag = loadJson();
+    	List<Allampolgarsag> allampolgarsag = loadJSON();
     	
     	for (SzemelyDTO szemely : szemelyek) 
     	{ 
@@ -58,7 +58,8 @@ public class SzemelyServiceImpl {
     	}
     	return incorrectPersons;
     }
-   public List<Allampolgarsag> loadJson() throws Exception {
+    
+   public List<Allampolgarsag> loadJSON() throws Exception {
 	   
 	   AllampolgarsagJSON allampolgarsag ;
 	   

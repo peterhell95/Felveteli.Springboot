@@ -6,7 +6,7 @@ import feladat.okmany.dto.OkmanyDTO;
 
 public interface OkmanyService {
 	
-	public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok);
+	public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception;
 	
   
 }
