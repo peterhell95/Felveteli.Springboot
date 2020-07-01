@@ -2,6 +2,7 @@ package feladat.szemely.checker;
 
 import org.springframework.stereotype.Service;
 
+import feladat.szemely.dto.OkmanyDTO;
 import feladat.szemely.dto.SzemelyDTO;
 import feladat.szemely.allamp.*;
 import java.util.Calendar;
@@ -82,6 +83,20 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     }
     
     public boolean correctOkmanylista(SzemelyDTO szemely) {
+    	List<OkmanyDTO> okmanyok = szemely.getOkmLista();
+    	int counter = 0;
+    	
+    	for (OkmanyDTO i : okmanyok) {	
+    	 counter = 0;
+   		 if(i.isErvenyes())
+   			for (OkmanyDTO k : okmanyok) {	
+   	   		 if(i.getOkmTipus() == k.getOkmTipus() && k.isErvenyes())
+   	   			 counter++;  	
+   		    }
+   		 if( counter > 1)
+   			 return false;
+	    }
+    	
     	return true;
     }
     

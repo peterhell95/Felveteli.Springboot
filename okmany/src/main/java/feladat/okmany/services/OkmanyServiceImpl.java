@@ -26,30 +26,35 @@ public class OkmanyServiceImpl implements OkmanyService {
     public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
     	List<OkmanyDTO> incorrectDocuments = new ArrayList<>();
     	List<Okmanytipus> okmanytipus = loadJSON();
-    	boolean incorrect = false;
     	
     	for (OkmanyDTO okmany : okmanyok) 
     	{ 
-    		incorrect = false;
     		
-    	    if(checker.incorrectOkmTipus(okmany, okmanytipus ))
-    	    	incorrect = true;
-    	    
-    	    if(checker.incorrectOkmanySzam(okmany))
-    	    	incorrect = true;
-    	    
-    	    if(checker.incorrectOkmanyKep(okmany))
-    	    	incorrect = true;
-    	    
-    	    if(checker.incorrectLejarDat(okmany))
-    	    	incorrect = true;
-    	    
-    	    if(checker.incorrectErvenyes(okmany))
-    	    	incorrect = true;
-    	    
-    	    if(incorrect == true)
+    	    if(checker.incorrectOkmTipus(okmany, okmanytipus )){
     	    	incorrectDocuments.add(okmany);
-    	 
+    	    	continue;
+    	    }
+    	    
+    	    if(checker.incorrectOkmanySzam(okmany)){
+    	    	incorrectDocuments.add(okmany);
+    	    	continue;
+    	    }
+    	    
+    	    if(checker.incorrectOkmanyKep(okmany)){
+    	    	incorrectDocuments.add(okmany);
+    	    	continue;
+    	    }
+    	    
+    	    if(checker.incorrectLejarDat(okmany)){
+    	    	incorrectDocuments.add(okmany);
+    	    	continue;
+    	    }
+    	    
+    	    if(checker.incorrectErvenyes(okmany)){
+    	    	incorrectDocuments.add(okmany);
+    	    	continue;
+    	    }
+    	    
     	}
     	return incorrectDocuments;
     }
@@ -62,6 +67,14 @@ public class OkmanyServiceImpl implements OkmanyService {
 		return okmanyok;
 		
 	}
+	
+	public List<OkmanyDTO> getAllOkmany() {
+		
+		List<OkmanyDTO> okmanylista = new ArrayList<>();
+		return okmanylista;
+		
+	}
+
     public List<Okmanytipus> loadJSON() throws Exception {  
     	
     		OkmanytipusJSON okmanytipus ;
@@ -75,5 +88,4 @@ public class OkmanyServiceImpl implements OkmanyService {
     }
 
 	
-
 }

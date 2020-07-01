@@ -30,37 +30,49 @@ public class SzemelyServiceImpl {
     public List<SzemelyDTO> szemelyCheck(List<SzemelyDTO> szemelyek) throws  Exception{
     	List<SzemelyDTO> incorrectPersons = new ArrayList<>();
     	List<Allampolgarsag> allampolgarsag = loadJSON();
-    	boolean incorrect = false;
+    	
     	for (SzemelyDTO szemely : szemelyek) 
     	{ 
-    		incorrect = false;
 
-    	    if(!checker.correctVisNev(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctSzulNev(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctANev(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctSzulDat(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctNeme(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctAllampKod(szemely,allampolgarsag))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctAllampDekod(szemely))
-    	    	incorrect = true;
-    	    
-    	    if(!checker.correctOkmanylista(szemely))
-    	    	incorrect = true;
-    	 
-    	    if(incorrect == true)
+    	    if(!checker.correctVisNev(szemely)){
     	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctSzulNev(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctANev(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctSzulDat(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctNeme(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctAllampKod(szemely,allampolgarsag)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctAllampDekod(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
+    	    
+    	    if(!checker.correctOkmanylista(szemely)){
+    	    	incorrectPersons.add(szemely);
+    	    	continue;
+    	    }
 
     	}
     	return incorrectPersons;

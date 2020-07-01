@@ -90,14 +90,14 @@ public class SzemelyDTO implements Serializable {
 	    }
 
 	
-	/*    public ArrayList<OkmanyDTO> getOkmLista() {
+	    public ArrayList<OkmanyDTO> getOkmLista() {
 	        return okmLista;
 	    }
 
 	 
 	    public void setOkmLista(ArrayList<OkmanyDTO> okmLista) {
 	        this.okmLista = okmLista;
-	    } */
+	    } 
 	    
 		private static final long serialVersionUID = 4L;
 	    
@@ -115,5 +115,5 @@ public class SzemelyDTO implements Serializable {
 	    
 	    private String allampDekod;
 	    
-	   // private ArrayList<OkmanyDTO> okmLista;
+	    private ArrayList<OkmanyDTO> okmLista;
 }

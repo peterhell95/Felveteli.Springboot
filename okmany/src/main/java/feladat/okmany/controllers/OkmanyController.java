@@ -1,7 +1,6 @@
 package feladat.okmany.controllers;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import feladat.okmany.dto.OkmanyDTO;
 import feladat.okmany.services.OkmanyService;
+
 
 @RestController
 @RequestMapping("/okmany")
@@ -28,6 +28,11 @@ public class OkmanyController {
     @GetMapping("/validDocuments/{okmanyok}")
     public List<OkmanyDTO> getAllValidDocuments(@PathVariable List<OkmanyDTO> okmanyok)  {
         return  service.getAllValidDocuments(okmanyok);
+    }
+    
+    @GetMapping("/list")
+    public List<OkmanyDTO> getAllOkmany() {
+        return service.getAllOkmany();
     }
     
 
