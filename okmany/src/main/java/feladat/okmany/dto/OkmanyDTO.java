@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 @Data
 @Builder
@@ -58,8 +59,14 @@ public class OkmanyDTO implements Serializable {
     }
 
    
-    public void setErvenyes(boolean ervenyes) {
-        this.ervenyes = ervenyes;
+    public void setErvenyes() {
+        Date lejarat = getLejarDat();
+        Date today = Calendar.getInstance().getTime();
+        	
+        		if(lejarat.after(today)) 
+        			this.ervenyes = true;
+        		else 
+        			this.ervenyes = false;
     }
     
     private static final long serialVersionUID = 1L;

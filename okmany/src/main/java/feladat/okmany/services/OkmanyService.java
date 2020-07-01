@@ -7,7 +7,9 @@ import feladat.okmany.dto.OkmanyDTO;
 
 public interface OkmanyService {
 	
-	public Set<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception;
+	public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception;
+
+	public List<OkmanyDTO> getAllValidDocuments(List<OkmanyDTO> okmanyok);
 	
   
 }

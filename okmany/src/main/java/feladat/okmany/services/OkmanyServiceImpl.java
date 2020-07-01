@@ -23,8 +23,8 @@ public class OkmanyServiceImpl implements OkmanyService {
 	@Autowired
     private OkmanyCheckerImpl checker;
 	
-    public Set<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
-    	Set<OkmanyDTO> incorrectDocuments = new HashSet<>();
+    public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
+    	List<OkmanyDTO> incorrectDocuments = new ArrayList<>();
     	List<Okmanytipus> okmanytipus = loadJSON();
     	boolean incorrect = false;
     	
@@ -54,19 +54,26 @@ public class OkmanyServiceImpl implements OkmanyService {
     	return incorrectDocuments;
     }
     
+	public List<OkmanyDTO> getAllValidDocuments(List<OkmanyDTO> okmanyok) {
+		for (OkmanyDTO okmany : okmanyok) 
+    	{ 
+    		okmany.setErvenyes();
+    	}
+		return okmanyok;
+		
+	}
     public List<Okmanytipus> loadJSON() throws Exception {  
- 	   OkmanytipusJSON okmanytipus ;
- 	   
- 		    // create object mapper instance
+    	
+    		OkmanytipusJSON okmanytipus ;
+ 	
  		    ObjectMapper mapper = new ObjectMapper();
 
- 		    // convert JSON string to Book object
  		    okmanytipus = mapper.readValue(Paths.get("kodszotar46_okmanytipus.json").toFile(), OkmanytipusJSON.class);
 
- 		    // print book
- 		    System.out.println(okmanytipus);
 
  	return okmanytipus.getRows();
     }
+
+	
 
 }
