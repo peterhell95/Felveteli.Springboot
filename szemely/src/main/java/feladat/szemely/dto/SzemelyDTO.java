@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import feladat.szemely.allamp.Allampolgarsag;
 @Data
 @Builder
 @NoArgsConstructor
@@ -77,8 +80,13 @@ public class SzemelyDTO implements Serializable {
 	    }
 
 	
-	    public void setAllampDekod(String allampDekod) {
-	        this.allampDekod = allampDekod;
+	    public void setAllampDekod(String allampDekod, List<Allampolgarsag> allampolgarsag) {
+	    	
+	    	for (Allampolgarsag i : allampolgarsag) {	
+	    		 if(i.getKod().equals(getAllampKod()))
+	    			 this.allampDekod = i.getAllampolgarsag();	
+	 	    }
+	        
 	    }
 
 	

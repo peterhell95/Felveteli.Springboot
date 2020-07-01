@@ -19,15 +19,14 @@ public class SzemelyController {
     @Autowired
     private SzemelyServiceImpl service;
 
-    
     @GetMapping("/incorrectPersons/{szemelyek}")
-    public Set<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
+    public List<SzemelyDTO> getAllIncorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
         return  service.szemelyCheck(szemelyek);
     }
     
-    @GetMapping("/correctPersons/{szemelyek}")
-    public Set<SzemelyDTO> getAllCorrectPerson(@PathVariable List<SzemelyDTO> szemelyek) {
-        return  service.getAllCorrectSzemely(szemelyek);
+    @GetMapping("/decodedPersons/{szemelyek}")
+    public List<SzemelyDTO> getAllDecodedPerson(@PathVariable List<SzemelyDTO> szemelyek) throws Exception {
+        return  service.getAllDecodedSzemely(szemelyek);
     }
     
 

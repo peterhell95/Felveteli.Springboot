@@ -73,15 +73,10 @@ public class SzemelyCheckerImpl implements SzemelyChecker {
     	return false;
     }
     
-    public boolean correctAllampDekod(SzemelyDTO szemely, List<Allampolgarsag> allampolgarsag) {
+    public boolean correctAllampDekod(SzemelyDTO szemely) {
     	
     	if(!szemely.getAllampDekod().isEmpty())
     		return false;
-    	
-    	for (Allampolgarsag i : allampolgarsag) {	
-    		 if(i.getKod().equals(szemely.getAllampKod()))
-    			 szemely.setAllampDekod(i.getAllampolgarsag());	
- 	    }
     	
     	return true;
     }

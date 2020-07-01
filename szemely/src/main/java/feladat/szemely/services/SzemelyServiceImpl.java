@@ -27,8 +27,8 @@ public class SzemelyServiceImpl {
 	@Autowired
     private SzemelyCheckerImpl checker;
 	
-    public Set<SzemelyDTO> szemelyCheck(List<SzemelyDTO> szemelyek) throws  Exception{
-    	Set<SzemelyDTO> incorrectPersons = new HashSet<>();
+    public List<SzemelyDTO> szemelyCheck(List<SzemelyDTO> szemelyek) throws  Exception{
+    	List<SzemelyDTO> incorrectPersons = new ArrayList<>();
     	List<Allampolgarsag> allampolgarsag = loadJSON();
     	boolean incorrect = false;
     	for (SzemelyDTO szemely : szemelyek) 
@@ -53,7 +53,7 @@ public class SzemelyServiceImpl {
     	    if(!checker.correctAllampKod(szemely,allampolgarsag))
     	    	incorrect = true;
     	    
-    	    if(!checker.correctAllampDekod(szemely,allampolgarsag))
+    	    if(!checker.correctAllampDekod(szemely))
     	    	incorrect = true;
     	    
     	    if(!checker.correctOkmanylista(szemely))
@@ -66,10 +66,14 @@ public class SzemelyServiceImpl {
     	return incorrectPersons;
     }
     
-    public Set<SzemelyDTO> getAllCorrectSzemely(List<SzemelyDTO> szemelyek) {
-    	Set<SzemelyDTO> correctPersons = new HashSet<>();
+    public List<SzemelyDTO> getAllDecodedSzemely(List<SzemelyDTO> szemelyek) throws Exception {
+    	List<Allampolgarsag> allampolgarsag = loadJSON();
     	
-    	return correctPersons;
+    	for (SzemelyDTO szemely : szemelyek) 
+    	{ 
+    		szemely.setAllampDekod("", allampolgarsag);
+    	}
+    	return szemelyek;
     }
     
    public List<Allampolgarsag> loadJSON() throws Exception {
@@ -79,11 +83,7 @@ public class SzemelyServiceImpl {
 		    ObjectMapper mapper = new ObjectMapper();
 
 		    allampolgarsag = mapper.readValue(Paths.get("kodszotar21_allampolg.json").toFile(), AllampolgarsagJSON.class);
-
-		    System.out.println(allampolgarsag);
-
-		
-	   
+  
 	return allampolgarsag.getRows();
    }
 
