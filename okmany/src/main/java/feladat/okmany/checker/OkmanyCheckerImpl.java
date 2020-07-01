@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -96,10 +98,26 @@ public class OkmanyCheckerImpl implements OkmanyChecker {
 	}
 
 	public boolean incorrectLejarDat(OkmanyDTO okmany) {
+		
+		if(okmany.getLejarDat() == null)
+			return false;
+		
 		return true;
 	}
 
 	public boolean incorrectErvenyes(OkmanyDTO okmany) {
+		//Date lejarat = okmany.getLejarDat();
+		//Date today = Calendar.getInstance().getTime();
+		Boolean tmp = okmany.isErvenyes();
+		
+		if(tmp != null )
+			return false;
+	
+		/*if(lejarat.before(today))  innen at kell rakni
+		{
+			okmany.setErvenyes(true);
+		}*/
+
 		return true;
 	}
 
