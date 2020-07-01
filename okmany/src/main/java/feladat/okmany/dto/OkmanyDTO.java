@@ -12,7 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class OkmanyDTO implements Serializable {
 
-
 	
     public String getOkmTipus() {
         return okmTipus;

@@ -20,9 +20,9 @@ public interface SzemelyChecker {
     
     public boolean correctNeme(SzemelyDTO szemely) ;
     
-    public boolean correctAllampKod(SzemelyDTO szemely,List<Allampolgarsag> list) ;
+    public boolean correctAllampKod(SzemelyDTO szemely, List<Allampolgarsag> allampolgarsag) ;
     
-    public boolean correctAllampDekod(SzemelyDTO szemely) ;
+    public boolean correctAllampDekod(SzemelyDTO szemely, List<Allampolgarsag> allampolgarsag) ;
     
     public boolean correctOkmanylista(SzemelyDTO szemely) ;
 

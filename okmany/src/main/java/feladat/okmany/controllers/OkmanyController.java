@@ -1,6 +1,7 @@
 package feladat.okmany.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class OkmanyController {
 
     
     @GetMapping("/incorrectDocuments/{okmanyok}")
-    public List<OkmanyDTO> getAllIncorrectDocument(@PathVariable List<OkmanyDTO> okmanyok) throws Exception {
+    public Set<OkmanyDTO> getAllIncorrectDocument(@PathVariable List<OkmanyDTO> okmanyok) throws Exception {
         return  service.okmanyCheck(okmanyok);
     }
     

@@ -13,7 +13,7 @@ public interface OkmanyChecker {
     
     public boolean incorrectOkmanySzam(OkmanyDTO okmany);
     
-    public boolean incorrectOkmanyKep(OkmanyDTO okmany) ;
+    public boolean incorrectOkmanyKep(OkmanyDTO okmany) throws Exception ;
     
     public boolean incorrectLejarDat(OkmanyDTO okmany) ;
     

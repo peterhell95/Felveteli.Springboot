@@ -2,7 +2,9 @@ package feladat.okmany.services;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +23,8 @@ public class OkmanyServiceImpl implements OkmanyService {
 	@Autowired
     private OkmanyCheckerImpl checker;
 	
-    public List<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
-    	List<OkmanyDTO> incorrectDocuments = new ArrayList<>();
+    public Set<OkmanyDTO> okmanyCheck(List<OkmanyDTO> okmanyok) throws Exception{
+    	Set<OkmanyDTO> incorrectDocuments = new HashSet<>();
     	List<Okmanytipus> okmanytipus = loadJSON();
     	
     	for (OkmanyDTO okmany : okmanyok) 

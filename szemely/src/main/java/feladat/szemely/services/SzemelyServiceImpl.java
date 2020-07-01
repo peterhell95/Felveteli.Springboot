@@ -49,7 +49,7 @@ public class SzemelyServiceImpl {
     	    if(!checker.correctAllampKod(szemely,allampolgarsag))
     	    	incorrectPersons.add(szemely);
     	    
-    	    if(!checker.correctAllampDekod(szemely))
+    	    if(!checker.correctAllampDekod(szemely,allampolgarsag))
     	    	incorrectPersons.add(szemely);
     	    
     	    if(!checker.correctOkmanylista(szemely))

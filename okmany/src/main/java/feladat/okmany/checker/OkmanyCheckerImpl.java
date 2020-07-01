@@ -1,6 +1,15 @@
 package feladat.okmany.checker;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 import org.springframework.stereotype.Service;
 
@@ -65,8 +74,25 @@ public class OkmanyCheckerImpl implements OkmanyChecker {
 		return true;
 	}
 
-	public boolean incorrectOkmanyKep(OkmanyDTO okmany) {
-		return true;
+	public boolean incorrectOkmanyKep(OkmanyDTO okmany) throws Exception {
+		
+		byte[] picture = okmany.getOkmanyKep();
+	    InputStream in = new ByteArrayInputStream(picture);
+	    BufferedImage buf = ImageIO.read(in);
+	    
+	    if(buf.getHeight() != 1063 || buf.getWidth() != 827)
+				return false;
+	        
+		ImageInputStream iis = ImageIO.createImageInputStream(new ByteArrayInputStream(picture));
+
+		Iterator<ImageReader> readers = ImageIO.getImageReaders(iis);
+		while (readers.hasNext()) {
+		    ImageReader read = readers.next();
+		    if( read.getFormatName().equals("jpeg"))
+				return true;
+		}
+		
+		return false;
 	}
 
 	public boolean incorrectLejarDat(OkmanyDTO okmany) {
